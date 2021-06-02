@@ -37,7 +37,7 @@
     </table>
     <div class="pager">
         <a th:each="pageNumber : ${#numbers.sequence(0,seznam.totalPages-1)}"
-           th:href="@{/(size=${seznam.size}, page=${pageNumber})}"
+           th:href="@{''(size=${seznam.size}, page=${pageNumber})}"
            th:text="${pageNumber + 1}"
            class="page"
            th:classappend="${pageNumber==seznam.number} ? 'active'"></a>

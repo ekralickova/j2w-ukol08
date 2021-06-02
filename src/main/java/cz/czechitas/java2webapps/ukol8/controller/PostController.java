@@ -2,6 +2,7 @@ package cz.czechitas.java2webapps.ukol8.controller;
 
 import cz.czechitas.java2webapps.ukol8.service.PostService;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,9 +17,9 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public ModelAndView zakladniSeznam() {
+    public ModelAndView zakladniSeznam(@PageableDefault(size = 20) Pageable pageable) {
         return new ModelAndView("seznam")
-                .addObject("seznam", postService.findByPublishedBeforeAndPublishedNotNull());
+                .addObject("seznam", postService.findByPublishedBeforeAndPublishedNotNull(pageable));
     }
 
     @GetMapping(path = "/", params = "slug")

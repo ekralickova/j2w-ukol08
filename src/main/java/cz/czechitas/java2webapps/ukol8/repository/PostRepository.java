@@ -17,5 +17,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Page<Post> findBySlug(String slug, Pageable pageable);
 
-    Page<Post> findByPublishedBetweenAndPublishedNotNull(LocalDate dateOd, LocalDate dateDo, Pageable ownPage);
+    Page<Post> findByPublishedBeforeAndPublishedNotNull(LocalDate dateBefore, Pageable ownPage);
 }

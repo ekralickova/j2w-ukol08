@@ -27,9 +27,8 @@ public class PostService {
         return postRepository.findBySlug(slug, Pageable.unpaged());
     }
 
-    public Page<Post> findByPublishedBeforeAndPublishedNotNull() {
-        LocalDate dateOd = LocalDate.of(1900, 1,1);
-        LocalDate dateDo = LocalDate.now();
-        return postRepository.findByPublishedBetweenAndPublishedNotNull(dateOd, dateDo, PostRepository.ownPage);
+    public Page<Post> findByPublishedBeforeAndPublishedNotNull(Pageable pageable) {
+        LocalDate dateBefore = LocalDate.now();
+        return postRepository.findByPublishedBeforeAndPublishedNotNull(dateBefore, pageable);
     }
 }
